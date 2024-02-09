@@ -1,0 +1,17 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    change-log: classpath:db/changelog/changelog.xml
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+
+logging:
+  level:
+    root: info
+
+exception:
+  handling:
+    include: true
