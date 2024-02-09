@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="fill-with-users-data" author="arvisit" >
+
+        <insert tableName="users">
+            <column name="username" value="user@mail.com"/>
+            <column name="password" value="$2a$12$czoHDYxLd2VIcOqdfZcmxOaQhays3dCPCcY1YSHIXQdzen43sfYtG"/>
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="admin@mail.com"/>
+            <column name="password" value="$2a$12$t9ZhmihquZmF5eQi0luACObmC2carJXOkYXW3Ib1/l6aiLddlXtGq"/>
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="service@mail.com"/>
+            <column name="password" value="$2a$12$PzIRr5bNTccbz6Q1moxBdO5qUT2nb.wjyUr5ai8GwmxUOyJhpmOAO"/>
+        </insert>
+
+        <insert tableName="users_roles">
+            <column name="user_id" valueComputed="(select u.id from users u where u.username = 'user@mail.com')"/>
+            <column name="role" value="USER"/>
+        </insert>
+        <insert tableName="users_roles">
+            <column name="user_id" valueComputed="(select u.id from users u where u.username = 'admin@mail.com')"/>
+            <column name="role" value="ADMIN"/>
+        </insert>
+        <insert tableName="users_roles">
+            <column name="user_id" valueComputed="(select u.id from users u where u.username = 'service@mail.com')"/>
+            <column name="role" value="SERVICE"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>
