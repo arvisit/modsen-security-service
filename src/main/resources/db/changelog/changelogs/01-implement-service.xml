@@ -35,7 +35,7 @@
         <addDefaultValue columnName="role" tableName="users_roles" defaultValue="USER" />
 
         <addForeignKeyConstraint constraintName="fk_users_roles_user_id"
-            referencedTableName="users" referencedColumnNames="id" baseColumnNames="user_id" baseTableName="roles" />
+            referencedTableName="users" referencedColumnNames="id" baseColumnNames="user_id" baseTableName="users_roles" />
 
     </changeSet>
 </databaseChangeLog>
