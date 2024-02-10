@@ -1,0 +1,25 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    change-log: classpath:db/changelog/changelog.xml
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+  security:
+    jwt:
+      secret: ${JWT_SECRET}
+      expiration: 3600000
+    cors:
+      allowedOrigin: ${CORS_ALLOWED_ORIGIN}
+      allowedMethod: ${CORS_ALLOWED_METHOD}
+      allowedHeader: ${CORS_ALLOWED_HEADER}
+
+logging:
+  level:
+    root: info
+
+exception:
+  handling:
+    include: true
