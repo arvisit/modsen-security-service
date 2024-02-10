@@ -49,6 +49,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/users/validate").permitAll()
                         .requestMatchers("/api/v1/users/register/**").permitAll()
                         .requestMatchers("/actuator/health").permitAll()
+                        .requestMatchers("/error").permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
