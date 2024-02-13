@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import by.arvisit.modsenlibapp.exceptionhandlingstarter.exception.BadRequestException;
 import by.arvisit.modsenlibapp.exceptionhandlingstarter.exception.InvalidTokenException;
+import by.arvisit.modsenlibapp.securityservice.controller.openapi.TokenValidatorOpenApi;
 import by.arvisit.modsenlibapp.securityservice.dto.UserDto;
 import by.arvisit.modsenlibapp.securityservice.service.JwtService;
 import lombok.RequiredArgsConstructor;
@@ -15,10 +16,11 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/users")
-public class TokenValidatorController {
+public class TokenValidatorController implements TokenValidatorOpenApi {
 
     private final JwtService jwtService;
     
+    @Override
     @GetMapping("/validate")
     public UserDto validate(@RequestHeader(name = HttpHeaders.AUTHORIZATION) String authHeader) {
         if (!authHeader.startsWith("Bearer ")) {
