@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import by.arvisit.modsenlibapp.securityservice.controller.openapi.AuthenticationOpenApi;
 import by.arvisit.modsenlibapp.securityservice.dto.AuthenticationRequestDto;
 import by.arvisit.modsenlibapp.securityservice.service.JwtService;
 import jakarta.validation.Valid;
@@ -26,10 +27,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Validated
 @RequestMapping("/api/v1/users")
-public class AuthenticationController {
+public class AuthenticationController implements AuthenticationOpenApi {
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
 
+    @Override
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> authenticate(@RequestBody @Valid AuthenticationRequestDto request) {
         try {
